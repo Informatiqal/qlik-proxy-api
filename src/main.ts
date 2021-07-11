@@ -18,6 +18,9 @@ export class QlikProxyApi {
   aboutDefault = About.prototype.aboutDefault;
   aboutDescription = About.prototype.aboutDescription;
   aboutEnums = About.prototype.aboutEnums;
+  aboutOpenApi = About.prototype.aboutOpenApi;
+  aboutOpenApiInterface = About.prototype.aboutOpenApiInterface;
+  aboutRelations = About.prototype.aboutRelations;
 
   alive = Alive.prototype.alive;
 

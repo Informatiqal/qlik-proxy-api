@@ -40,3 +40,10 @@ export interface ITicket {
   Ticket: string;
   TargetUri: string;
 }
+
+export interface IEnums {
+  key: {
+    values: string[];
+    usages: string[];
+  };
+}

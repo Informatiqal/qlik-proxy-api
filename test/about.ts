@@ -22,7 +22,7 @@ describe("About operations", function () {
   });
 
   it("About enums", async function () {
-    let aboutEnums = await proxyApi.aboutEnums();
+    let aboutEnums = await proxyApi.aboutOpenApiInterface("Main");
 
     expect(true).to.be.true;
   });
