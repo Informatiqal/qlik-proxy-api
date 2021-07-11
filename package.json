@@ -1,0 +1,52 @@
+{
+  "name": "qlik-proxy-api",
+  "version": "0.0.1",
+  "description": "Interact with Qlik Sense Proxy API (QSEoW)",
+  "author": {
+    "email": "info@informatiqal.com",
+    "name": "Informatiqal @informatiqal",
+    "url": "https://informatiqal.com"
+  },
+  "main": "dist/src/index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "prestart": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Informatiqal/qlik-proxy-api.git"
+  },
+  "keywords": [
+    "proxy",
+    "qlik",
+    "qlik-sense",
+    "rest",
+    "api"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist/*",
+    "*.json",
+    "*.md",
+    "LICENSE"
+  ],
+  "bugs": {
+    "url": "https://github.com/Informatiqal/qlik-proxy-api/issues"
+  },
+  "homepage": "https://github.com/Informatiqal/qlik-proxy-api#readme",
+  "dependencies": {
+    "qlik-rest-api": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^16.3.1",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "mocha": "^9.0.2",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}
