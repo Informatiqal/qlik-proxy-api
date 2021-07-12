@@ -8,6 +8,25 @@ import { Session } from "./methods/Session";
 import { Ticket } from "./methods/Ticket";
 import { User } from "./methods/User";
 import { VirtualProxy } from "./methods/VirtualProxy";
+import {
+  ITicket,
+  IUser,
+  IEnums,
+  IError,
+  INotified,
+  ISession,
+  IvpDeleteSession,
+} from "./Interfaces";
+
+export {
+  ITicket,
+  IEnums,
+  IError,
+  INotified,
+  ISession,
+  IvpDeleteSession,
+  IUser,
+};
 
 export class QlikProxyApi {
   public proxyClient: QlikProxyClient;
