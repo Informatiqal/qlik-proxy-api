@@ -13,7 +13,7 @@ export class About {
 
   public async aboutDescription(this: QlikProxyApi): Promise<string[]> {
     return await this.proxyClient
-      .Get(`about/default`)
+      .Get(`about/description`)
       .then((res) => res.data as string[]);
   }
 
@@ -38,7 +38,7 @@ export class About {
   public async aboutOpenApiInterface(
     this: QlikProxyApi,
     interfaceName: string
-  ): Promise<any> {
+  ): Promise<Object> {
     return await this.proxyClient
       .Get(`about/openapi/${interfaceName}`)
       .then((res) => res.data);
