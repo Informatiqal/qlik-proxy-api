@@ -1,7 +1,7 @@
 import { QlikProxyClient } from "qlik-rest-api";
 import { About } from "./methods/About";
 import { Alive } from "./methods/Alive";
-import { Error } from "./methods/Error";
+import { Errors } from "./methods/Error";
 import { Health } from "./methods/Health";
 import { Notified } from "./methods/Notified";
 import { Session } from "./methods/Session";
@@ -43,7 +43,7 @@ export class QlikProxyApi {
 
   alive = Alive.prototype.alive;
 
-  error = Error.prototype.error;
+  error = Errors.prototype.error;
 
   health = Health.prototype.health;
 

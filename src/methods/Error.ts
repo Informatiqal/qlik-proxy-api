@@ -2,10 +2,11 @@ import { QlikProxyApi } from "../main";
 
 import { IError } from "../Interfaces";
 
-export class Error {
+export class Errors {
   constructor() {}
 
   public async error(this: QlikProxyApi, arg: IError): Promise<string> {
+    if (!arg.message) throw new Error(`error: "message" parameter is required`);
     let data = {
       message: arg.message,
       userId: arg.userId || "",

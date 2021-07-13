@@ -11,6 +11,9 @@ export class Ticket {
     userDir: string,
     ticket?: string
   ): Promise<ITicket> {
+    if (!userId) throw new Error(`ticketAdd: "userId" parameter is required`);
+    if (!userDir) throw new Error(`ticketAdd: "userDir" parameter is required`);
+
     let data = {
       userId,
       userDirectory: userDir,

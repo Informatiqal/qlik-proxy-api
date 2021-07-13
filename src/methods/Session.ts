@@ -9,6 +9,9 @@ export class Session {
     this: QlikProxyApi,
     sessionId: string
   ): Promise<ISession> {
+    if (!sessionId)
+      throw new Error(`sessionGet: "sessionId" parameter is required`);
+
     return await this.proxyClient
       .Get(`session/${sessionId}`)
       .then((res) => res.data as ISession);
@@ -24,6 +27,9 @@ export class Session {
     this: QlikProxyApi,
     userId: string
   ): Promise<ISession[]> {
+    if (!userId)
+      throw new Error(`sessionGetAllForUserId: "userId" parameter is required`);
+
     return await this.sessionGetAll().then((allSessions) => {
       return allSessions.filter((s) => s.UserId == userId);
     });
@@ -33,6 +39,11 @@ export class Session {
     this: QlikProxyApi,
     userDir: string
   ): Promise<ISession[]> {
+    if (!userDir)
+      throw new Error(
+        `sessionGetAllForUserDir: "userDir" parameter is required`
+      );
+
     return await this.sessionGetAll().then((allSessions) => {
       return allSessions.filter((s) => s.UserDirectory == userDir);
     });
@@ -43,6 +54,10 @@ export class Session {
     userId: string,
     userDir: string
   ): Promise<ISession> {
+    if (!userId) throw new Error(`sessionAdd: "userId" parameter is required`);
+    if (!userDir)
+      throw new Error(`sessionAdd: "userDir" parameter is required`);
+
     return await this.proxyClient
       .Post(`session`, {
         userId: userId,
@@ -52,19 +67,13 @@ export class Session {
       .then((res) => res.data as ISession);
   }
 
-  // public async sessionRemoveAllForUser(
-  //   this: QlikProxyApi,
-  //   userId: string
-  // ): Promise<number> {
-  //   return await this.proxyClient
-  //     .Delete(`session/${sessionId}`)
-  //     .then((res) => res.status);
-  // }
-
   public async sessionRemove(
     this: QlikProxyApi,
     sessionId: string
   ): Promise<number> {
+    if (!sessionId)
+      throw new Error(`sessionRemove: "sessionId" parameter is required`);
+
     return await this.proxyClient
       .Delete(`session/${sessionId}`)
       .then((res) => res.status);

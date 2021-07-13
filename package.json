@@ -1,6 +1,6 @@
 {
   "name": "qlik-proxy-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Interact with Qlik Sense Proxy API (QSEoW)",
   "author": {
     "email": "info@informatiqal.com",
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/Informatiqal/qlik-proxy-api/issues"
   },
-  "homepage": "https://github.com/Informatiqal/qlik-proxy-api#readme",
+  "homepage": "https://informatiqal.com/qlik-proxy-api/",
   "dependencies": {
     "qlik-rest-api": "^1.0.1"
   },

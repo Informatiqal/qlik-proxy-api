@@ -1,6 +1,7 @@
 import { QlikProxyApi } from "../main";
 
 import { IEnums } from "../Interfaces";
+import { Errors } from "./Error";
 
 export class About {
   constructor() {}
@@ -39,6 +40,10 @@ export class About {
     this: QlikProxyApi,
     interfaceName: string
   ): Promise<Object> {
+    if (!interfaceName)
+      throw new Error(
+        `aboutOpenApiInterface: "interfaceName" parameter is required`
+      );
     return await this.proxyClient
       .Get(`about/openapi/${interfaceName}`)
       .then((res) => res.data);
