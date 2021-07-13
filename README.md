@@ -45,6 +45,12 @@ let vpSessions = await proxyApi.virtualProxySessionGetAll("some-vp");
 console.log(vpSessions); // array or all active sessions for specified virtual proxy
 ```
 
+In "plain" `Node.js`
+
+```javascript
+const { QlikProxyApi } = require("qlik-proxy-api/dist/src/main");
+```
+
 # Endpoints and methods
 
 | Area           | HTTP Method | Endpoint                              | Method                             |

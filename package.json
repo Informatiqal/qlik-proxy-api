@@ -1,13 +1,13 @@
 {
   "name": "qlik-proxy-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Interact with Qlik Sense Proxy API (QSEoW)",
   "author": {
     "email": "info@informatiqal.com",
     "name": "Informatiqal @informatiqal",
     "url": "https://informatiqal.com"
   },
-  "main": "dist/src/index.js",
+  "main": "dist/src/main.js",
   "scripts": {
     "start": "node dist/app.js",
     "prestart": "npm run build",
