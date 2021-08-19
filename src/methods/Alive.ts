@@ -1,11 +1,18 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-export class Alive {
-  constructor() {}
+export interface IClassAlive {
+  get(): Promise<boolean>;
+}
 
-  public async alive(this: QlikProxyApi): Promise<number> {
+export class Alive implements IClassAlive {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
+
+  public async get() {
     return await this.proxyClient
       .Get(`alive`)
-      .then((res) => res.status as number);
+      .then((res) => res.data.value as boolean);
   }
 }

@@ -4,6 +4,7 @@
         "interfacename",
         "openapi",
         "prestart",
+        "typedoc",
         "virtualproxy",
         "yxxx"
     ]

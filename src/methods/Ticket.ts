@@ -1,29 +1,50 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-import { ITicket } from "../Interfaces";
+export interface ITicket {
+  UserDirectory: string;
+  UserId: string;
+  Attributes: string[];
+  Ticket: string;
+  TargetUri: string;
+}
 
-export class Ticket {
-  constructor() {}
-
-  public async ticketAdd(
-    this: QlikProxyApi,
+export interface IClassTickets {
+  add(
     userId: string,
-    userDir: string,
+    userDirectory: string,
+    ticket?: string,
+    virtualProxy?: string
+  ): Promise<ITicket>;
+}
+export class Tickets implements IClassTickets {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
+
+  public async add(
+    userId: string,
+    userDirectory: string,
+    virtualProxy?: string,
     ticket?: string
-  ): Promise<ITicket> {
-    if (!userId) throw new Error(`ticketAdd: "userId" parameter is required`);
-    if (!userDir) throw new Error(`ticketAdd: "userDir" parameter is required`);
+  ) {
+    if (!userId) throw new Error(`ticket.add: "userId" parameter is required`);
+    if (!userDirectory)
+      throw new Error(`ticket.add: "userDirectory" parameter is required`);
+
+    let url = "ticket";
+    if (virtualProxy) url = `${virtualProxy}/ticket`;
 
     let data = {
       userId,
-      userDirectory: userDir,
+      userDirectory: userDirectory,
       ticket: ticket || "",
     };
 
     if (!ticket) delete data.ticket;
 
     return await this.proxyClient
-      .Post(`ticket`, data)
+      .Post(url, data)
       .then((res) => res.data as ITicket);
   }
 }

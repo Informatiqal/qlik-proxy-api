@@ -9,8 +9,8 @@ describe("Alive", function () {
   this.timeout(30000);
 
   it("Alive", async function () {
-    let alive = await proxyApi.alive();
+    let alive = await proxyApi.alive.get();
 
-    expect(alive).to.be.equal(200);
+    expect(alive).to.be.equal(true);
   });
 });

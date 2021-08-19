@@ -9,21 +9,20 @@ describe("About operations", function () {
   this.timeout(30000);
 
   it("About default", async function () {
-    let aboutDefault = await proxyApi.aboutDefault();
+    const aboutDefault = await proxyApi.about.default();
 
-    // expect(allTags.length).to.be.greaterThan(0);
-    expect(true).to.be.true;
+    expect(aboutDefault).to.be.an("object");
   });
 
   it("About description", async function () {
-    let aboutDescription = await proxyApi.aboutDescription();
+    const aboutDescription = await proxyApi.about.description();
 
-    expect(true).to.be.true;
+    expect(aboutDescription.length).to.be.greaterThan(0);
   });
 
   it("About enums", async function () {
-    let aboutEnums = await proxyApi.aboutOpenApiInterface("Main");
+    const aboutEnums = await proxyApi.about.openApiInterface("Main");
 
-    expect(true).to.be.true;
+    expect(aboutEnums).to.have.property("basePath");
   });
 });

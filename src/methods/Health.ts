@@ -1,11 +1,18 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-export class Health {
-  constructor() {}
+export interface IClassHealth {
+  get(): Promise<number>;
+}
 
-  public async health(this: QlikProxyApi): Promise<string> {
+export class Health implements IClassHealth {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
+
+  public async get() {
     return await this.proxyClient
       .Get(`health`)
-      .then((res) => res.data as string);
+      .then((res) => res.status as number);
   }
 }

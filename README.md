@@ -22,7 +22,7 @@ const httpsAgentCert = new https.Agent({
 });
 
 // create new instance or qlik-proxy-api
-let proxyApi = new QlikProxyApi({
+const proxyApi = new QlikProxyApi.client({
   host: "my-qs-host",
   port: 4243, // optional. default is 4243
   httpsAgent: httpsAgentCert,
@@ -33,15 +33,16 @@ let proxyApi = new QlikProxyApi({
 });
 
 // at this point we can use proxyApi to call any method
-let aliveResponse = await proxyApi.alive();
+const aliveResponse = await proxyApi.alive.get();
 
-let ticketResponse = await proxyApi.ticketAdd({
-  userId: "SOME_USER_ID",
-  userDir: "SOME_USER_DIR",
-});
+const ticketResponse = await proxyApi.tickets.add(
+  "SOME_USER_ID",
+  "SOME_USER_DIR",
+  "virtual-proxy-prefix" // optional
+);
 console.log(ticketResponse.ticket); // id of the generated ticket
 
-let vpSessions = await proxyApi.virtualProxySessionGetAll("some-vp");
+const vpSessions = await proxyApi.virtualProxies.sessionGetAll("some-vp");
 console.log(vpSessions); // array or all active sessions for specified virtual proxy
 ```
 
@@ -53,31 +54,5 @@ const { QlikProxyApi } = require("qlik-proxy-api/dist/src/main");
 
 # Endpoints and methods
 
-| Area           | HTTP Method | Endpoint                              | Method                             |
-| -------------- | ----------- | ------------------------------------- | ---------------------------------- |
-| About          | `GET`       | `/about/default`                      | `aboutDefault`                     |
-| About          | `GET`       | `/about/description`                  | `aboutDescription`                 |
-| About          | `GET`       | `/about/enums`                        | `aboutEnums`                       |
-| About          | `GET`       | `/about/openapi`                      | `aboutOpenApi`                     |
-| About          | `GET`       | `/about/openapi/{interfacename}`      | `aboutOpenApiInterface`            |
-| About          | `GET`       | `/about/relations`                    | `aboutRelations`                   |
-| Alive          | `GET`       | `/alive`                              | `alive`                            |
-| Error          | `POST`      | `/error`                              | `error`                            |
-| Health         | `GET`       | `/health`                             | `health`                           |
-| Notified       | `POST`      | `/notified`                           | `notified`                         |
-| Session        | `GET`       | `/session`                            | `sessionGetAll`                    |
-| Session        | `POST`      | `/session`                            | `sessionAdd`                       |
-| Session        | `DELETE`    | `/session/{id}`                       | `sessionRemove`                    |
-| Session        | `GET`       | `/session/{id}`                       | `sessionGet`                       |
-| Session        | `-`         | `-`                                   | `sessionGetAllForUserDir`          |
-| Session        | `-`         | `-`                                   | `sessionGetAllForUserId`           |
-| Ticket         | `POST`      | `/ticket`                             | `ticketAdd`                        |
-| User           | `GET`       | `/user/{directory}/{id}`              | `userGet`                          |
-| User           | `DELETE`    | `/user/{directory}/{id}`              | `userRemove`                       |
-| {virtualproxy} | `GET`       | `/virtualproxy/session/{id}`          | `virtualProxySessionGet`           |
-| {virtualproxy} | `DELETE`    | `/virtualproxy/session/{id}`          | `virtualProxySessionRemove`        |
-| {virtualproxy} | `GET`       | `/virtualproxy/session`               | `virtualProxySessionGetAll`        |
-| {virtualproxy} | `POST`      | `/virtualproxy/session`               | `virtualProxySessionAdd`           |
-| {virtualproxy} | `GET`       | `/virtualproxy/user/{directory}/{id}` | `virtualProxySessionGetForUser`    |
-| {virtualproxy} | `DELETE`    | `/virtualproxy/user/{directory}/{id}` | `virtualProxySessionRemoveForUser` |
-| {virtualproxy} | `POST`      | `/virtualproxy/ticket`                | `virtualProxyTicketAdd`            |
+Please check the
+[documentation page](https://informatiqal.github.io/qlik-proxy-api/modules.html) for list of methods

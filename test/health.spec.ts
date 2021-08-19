@@ -9,8 +9,8 @@ describe("Health", function () {
   this.timeout(30000);
 
   it("Health", async function () {
-    let health = await proxyApi.health();
+    const health = await proxyApi.health.get();
 
-    expect(true).to.be.true;
+    expect(health).to.be.equal(200);
   });
 });

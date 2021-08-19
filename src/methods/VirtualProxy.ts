@@ -1,16 +1,50 @@
-import { QlikProxyApi } from "../main";
-import { generateUUID } from "./Session";
+import { generateUUID } from "../utils";
 
-import { IvpDeleteSession, ISession, ITicket } from "../Interfaces";
+import { ISession } from "./Sessions";
+import { ITicket } from "../methods/Ticket";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-export class VirtualProxy {
-  constructor() {}
+export interface IvpDeleteSession extends ISession {
+  lastSessionForUser?: boolean;
+}
 
-  public async virtualProxySessionRemove(
-    this: QlikProxyApi,
+export interface IClassVirtualProxies {
+  sessionRemove(
     virtualProxy: string,
     sessionId: string
-  ): Promise<IvpDeleteSession> {
+  ): Promise<IvpDeleteSession>;
+  sessionRemoveForUser(
+    virtualProxy: string,
+    userId: string,
+    userDirectory: string
+  ): Promise<ISession[]>;
+  sessionGetAll(virtualProxy: string): Promise<ISession[]>;
+  sessionGet(virtualProxy: string, sessionId: string): Promise<ISession[]>;
+  sessionGetForUser(
+    virtualProxy: string,
+    userId: string,
+    userDirectory: string
+  ): Promise<ISession[]>;
+  sessionAdd(
+    virtualProxy: string,
+    userId: string,
+    userDirectory: string
+  ): Promise<ISession>;
+  ticketAdd(
+    virtualProxy: string,
+    userId: string,
+    userDirectory: string,
+    ticket?: string
+  ): Promise<ITicket>;
+}
+
+export class VirtualProxies {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
+
+  public async sessionRemove(virtualProxy: string, sessionId: string) {
     if (!virtualProxy)
       throw new Error(
         `virtualProxySessionRemove: "virtualProxy" parameter is required`
@@ -25,37 +59,33 @@ export class VirtualProxy {
       .then((res) => res.data as IvpDeleteSession);
   }
 
-  public async virtualProxySessionRemoveForUser(
-    this: QlikProxyApi,
+  public async sessionRemoveForUser(
     virtualProxy: string,
     userId: string,
-    userDir: string
-  ): Promise<ISession[]> {
+    userDirectory: string
+  ) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxySessionRemoveForUser: "virtualProxy" parameter is required`
+        `virtualProxies.sessionRemoveForUser: "virtualProxy" parameter is required`
       );
     if (!userId)
       throw new Error(
-        `virtualProxySessionRemoveForUser: "userId" parameter is required`
+        `virtualProxies.sessionRemoveForUser: "userId" parameter is required`
       );
-    if (!userDir)
+    if (!userDirectory)
       throw new Error(
-        `virtualProxySessionRemoveForUser: "userDir" parameter is required`
+        `virtualProxies.sessionRemoveForUser: "userDirectory" parameter is required`
       );
 
     return await this.proxyClient
-      .Delete(`${virtualProxy}/user/${userDir}/${userId}`)
+      .Delete(`${virtualProxy}/user/${userDirectory}/${userId}`)
       .then((res) => res.data as ISession[]);
   }
 
-  public async virtualProxySessionGetAll(
-    this: QlikProxyApi,
-    virtualProxy: string
-  ): Promise<ISession[]> {
+  public async sessionGetAll(virtualProxy: string) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxySessionGetAll: "virtualProxy" parameter is required`
+        `virtualProxies.sessionGetAll: "virtualProxy" parameter is required`
       );
 
     return await this.proxyClient
@@ -63,18 +93,14 @@ export class VirtualProxy {
       .then((res) => res.data as ISession[]);
   }
 
-  public async virtualProxySessionGet(
-    this: QlikProxyApi,
-    virtualProxy: string,
-    sessionId: string
-  ): Promise<ISession[]> {
+  public async sessionGet(virtualProxy: string, sessionId: string) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxySessionGet: "virtualProxy" parameter is required`
+        `virtualProxies.sessionGet: "virtualProxy" parameter is required`
       );
     if (!sessionId)
       throw new Error(
-        `virtualProxySessionGet: "sessionId" parameter is required`
+        `virtualProxies.sessionGet: "sessionId" parameter is required`
       );
 
     return await this.proxyClient
@@ -82,75 +108,78 @@ export class VirtualProxy {
       .then((res) => res.data as ISession[]);
   }
 
-  public async virtualProxySessionGetForUser(
-    this: QlikProxyApi,
+  public async sessionGetForUser(
     virtualProxy: string,
     userId: string,
-    userDir: string
-  ): Promise<ISession[]> {
+    userDirectory: string
+  ) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxySessionGetForUser: "virtualProxy" parameter is required`
+        `virtualProxies.sessionGetForUser: "virtualProxy" parameter is required`
       );
     if (!userId)
       throw new Error(
-        `virtualProxySessionGetForUser: "userId" parameter is required`
+        `virtualProxies.sessionGetForUser: "userId" parameter is required`
       );
-    if (!userDir)
+    if (!userDirectory)
       throw new Error(
-        `virtualProxySessionGetForUser: "userDir" parameter is required`
+        `virtualProxies.sessionGetForUser: "userDirectory" parameter is required`
       );
 
     return await this.proxyClient
-      .Get(`${virtualProxy}/user/${userDir}/${userId}`)
+      .Get(`${virtualProxy}/user/${userDirectory}/${userId}`)
       .then((res) => res.data as ISession[]);
   }
 
-  public async virtualProxySessionAdd(
-    this: QlikProxyApi,
+  public async sessionAdd(
     virtualProxy: string,
     userId: string,
-    userDir: string
-  ): Promise<ISession> {
+    userDirectory: string
+  ) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxySessionAdd: "virtualProxy" parameter is required`
+        `virtualProxies.sessionAdd: "virtualProxy" parameter is required`
       );
     if (!userId)
-      throw new Error(`virtualProxySessionAdd: "userId" parameter is required`);
-    if (!userDir)
       throw new Error(
-        `virtualProxySessionAdd: "userDir" parameter is required`
+        `virtualProxies.sessionAdd: "userId" parameter is required`
+      );
+    if (!userDirectory)
+      throw new Error(
+        `virtualProxies.sessionAdd: "userDirectory" parameter is required`
       );
 
     return await this.proxyClient
       .Post(`${virtualProxy}/session`, {
         userId: userId,
-        userDirectory: userDir,
+        userDirectory: userDirectory,
         sessionId: generateUUID(),
       })
       .then((res) => res.data as ISession);
   }
 
-  public async virtualProxyTicketAdd(
-    this: QlikProxyApi,
+  public async ticketAdd(
     virtualProxy: string,
     userId: string,
-    userDir: string,
+    userDirectory: string,
     ticket?: string
-  ): Promise<ITicket> {
+  ) {
     if (!virtualProxy)
       throw new Error(
-        `virtualProxyTicketAdd: "virtualProxy" parameter is required`
+        `virtualProxies.ticketAdd: "virtualProxy" parameter is required`
       );
     if (!userId)
-      throw new Error(`virtualProxyTicketAdd: "userId" parameter is required`);
-    if (!userDir)
-      throw new Error(`virtualProxyTicketAdd: "userDir" parameter is required`);
+      throw new Error(
+        `virtualProxies.ticketAdd: "userId" parameter is required`
+      );
+    if (!userDirectory)
+      throw new Error(
+        `virtualProxies.ticketAdd: "userDirectory" parameter is required`
+      );
 
     let data = {
       userId,
-      userDirectory: userDir,
+      userDirectory: userDirectory,
       ticket: ticket || "",
     };
 

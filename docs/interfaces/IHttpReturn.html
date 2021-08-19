@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IvpDeleteSession | Qlik Proxy API</title>
+	<title>IHttpReturn | Qlik Proxy API</title>
 	<meta name="description" content="Documentation for Qlik Proxy API">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">Qlik Proxy API</a>
 				</li>
 				<li>
-					<a href="IvpDeleteSession.html">IvpDeleteSession</a>
+					<a href="IHttpReturn.html">IHttpReturn</a>
 				</li>
 			</ul>
-			<h1>Interface IvpDeleteSession</h1>
+			<h1>Interface IHttpReturn</h1>
 		</div>
 	</div>
 </header>
@@ -69,12 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="ISession.html" class="tsd-signature-type" data-tsd-kind="Interface">ISession</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">IvpDeleteSession</span>
-							</li>
-						</ul>
+						<span class="target">IHttpReturn</span>
 					</li>
 				</ul>
 			</section>
@@ -82,84 +77,46 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="IvpDeleteSession.html#Attributes" class="tsd-kind-icon">Attributes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="IvpDeleteSession.html#NewUser" class="tsd-kind-icon">New<wbr>User</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="IvpDeleteSession.html#SessionId" class="tsd-kind-icon">Session<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="IvpDeleteSession.html#UserDirectory" class="tsd-kind-icon">User<wbr>Directory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="IvpDeleteSession.html#UserId" class="tsd-kind-icon">User<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="IvpDeleteSession.html#lastSessionForUser" class="tsd-kind-icon">last<wbr>Session<wbr>For<wbr>User</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="IHttpReturn.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="IHttpReturn.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="IHttpReturn.html#statusText" class="tsd-kind-icon">status<wbr>Text</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="Attributes" class="tsd-anchor"></a>
-					<h3>Attributes</h3>
-					<div class="tsd-signature tsd-kind-icon">Attributes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="ISession.html">ISession</a>.<a href="ISession.html#Attributes">Attributes</a></p>
 						<ul>
-							<li>Defined in src/methods/Sessions.ts:8</li>
+							<li>Defined in node_modules/qlik-rest-api/dist/interfaces/interfaces.d.ts:36</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="NewUser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> New<wbr>User</h3>
-					<div class="tsd-signature tsd-kind-icon">New<wbr>User<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="ISession.html">ISession</a>.<a href="ISession.html#NewUser">NewUser</a></p>
 						<ul>
-							<li>Defined in src/methods/Sessions.ts:10</li>
+							<li>Defined in node_modules/qlik-rest-api/dist/interfaces/interfaces.d.ts:34</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="SessionId" class="tsd-anchor"></a>
-					<h3>Session<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">Session<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ISession.html">ISession</a>.<a href="ISession.html#SessionId">SessionId</a></p>
-						<ul>
-							<li>Defined in src/methods/Sessions.ts:9</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="UserDirectory" class="tsd-anchor"></a>
-					<h3>User<wbr>Directory</h3>
-					<div class="tsd-signature tsd-kind-icon">User<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ISession.html">ISession</a>.<a href="ISession.html#UserDirectory">UserDirectory</a></p>
-						<ul>
-							<li>Defined in src/methods/Sessions.ts:6</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="UserId" class="tsd-anchor"></a>
-					<h3>User<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">User<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ISession.html">ISession</a>.<a href="ISession.html#UserId">UserId</a></p>
-						<ul>
-							<li>Defined in src/methods/Sessions.ts:7</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="lastSessionForUser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Session<wbr>For<wbr>User</h3>
-					<div class="tsd-signature tsd-kind-icon">last<wbr>Session<wbr>For<wbr>User<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="statusText" class="tsd-anchor"></a>
+					<h3>status<wbr>Text</h3>
+					<div class="tsd-signature tsd-kind-icon">status<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/41a5d7e/src/methods/VirtualProxy.ts#L8">src/methods/VirtualProxy.ts:8</a></li>
+							<li>Defined in node_modules/qlik-rest-api/dist/interfaces/interfaces.d.ts:35</li>
 						</ul>
 					</aside>
 				</section>
@@ -235,9 +192,24 @@
 					<li class=" tsd-kind-interface">
 						<a href="IError.html" class="tsd-kind-icon">IError</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-is-external">
 						<a href="IHttpReturn.html" class="tsd-kind-icon">IHttp<wbr>Return</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="IHttpReturn.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="IHttpReturn.html#status" class="tsd-kind-icon">status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="IHttpReturn.html#statusText" class="tsd-kind-icon">status<wbr>Text</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="INotified.html" class="tsd-kind-icon">INotified</a>
 					</li>
@@ -247,33 +219,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="ITicket.html" class="tsd-kind-icon">ITicket</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="IvpDeleteSession.html" class="tsd-kind-icon">Ivp<wbr>Delete<wbr>Session</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="IvpDeleteSession.html#Attributes" class="tsd-kind-icon">Attributes</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="IvpDeleteSession.html#NewUser" class="tsd-kind-icon">New<wbr>User</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="IvpDeleteSession.html#SessionId" class="tsd-kind-icon">Session<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="IvpDeleteSession.html#UserDirectory" class="tsd-kind-icon">User<wbr>Directory</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="IvpDeleteSession.html#UserId" class="tsd-kind-icon">User<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="IvpDeleteSession.html#lastSessionForUser" class="tsd-kind-icon">last<wbr>Session<wbr>For<wbr>User</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
