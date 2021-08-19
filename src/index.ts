@@ -7,7 +7,6 @@ import { Health, IClassHealth } from "./methods/Health";
 import { Notified, IClassNotified } from "./methods/Notified";
 import { Sessions, IClassSessions } from "./methods/Sessions";
 import { Tickets, IClassTickets } from "./methods/Ticket";
-import { VirtualProxies, IClassVirtualProxies } from "./methods/VirtualProxy";
 
 export namespace QlikProxyApi {
   export class client {
@@ -20,7 +19,6 @@ export namespace QlikProxyApi {
     public notified: IClassNotified;
     public sessions: IClassSessions;
     public tickets: IClassTickets;
-    public virtualProxies: IClassVirtualProxies;
     constructor(public proxyConfig: any) {
       this.proxyClient = new QlikProxyClient(proxyConfig);
 
@@ -31,7 +29,6 @@ export namespace QlikProxyApi {
       this.notified = new Notified(this.proxyClient);
       this.sessions = new Sessions(this.proxyClient);
       this.tickets = new Tickets(this.proxyClient);
-      this.virtualProxies = new VirtualProxies(this.proxyClient);
     }
   }
 }

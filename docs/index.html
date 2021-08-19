@@ -81,7 +81,7 @@
 <span style="color: #000000">});</span>
 
 <span style="color: #008000">// create new instance or qlik-proxy-api</span>
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">QlikProxyApi</span><span style="color: #000000">({</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">proxyApi</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">QlikProxyApi</span><span style="color: #000000">.</span><span style="color: #795E26">client</span><span style="color: #000000">({</span>
 <span style="color: #000000">  </span><span style="color: #001080">host:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;my-qs-host&quot;</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">port:</span><span style="color: #000000"> </span><span style="color: #098658">4243</span><span style="color: #000000">, </span><span style="color: #008000">// optional. default is 4243</span>
 <span style="color: #000000">  </span><span style="color: #001080">httpsAgent:</span><span style="color: #000000"> </span><span style="color: #001080">httpsAgentCert</span><span style="color: #000000">,</span>
@@ -92,16 +92,22 @@
 <span style="color: #000000">});</span>
 
 <span style="color: #008000">// at this point we can use proxyApi to call any method</span>
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">aliveResponse</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #795E26">alive</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aliveResponse</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #001080">alive</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">();</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">ticketResponse</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #795E26">ticketAdd</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">userId:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;SOME_USER_ID&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">userDir:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;SOME_USER_DIR&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">});</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ticketResponse</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #001080">tickets</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;SOME_USER_ID&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;SOME_USER_DIR&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;virtual-proxy-prefix&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// optional. default is the main/default virtual proxy</span>
+<span style="color: #000000">);</span>
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">ticketResponse</span><span style="color: #000000">.</span><span style="color: #001080">ticket</span><span style="color: #000000">); </span><span style="color: #008000">// id of the generated ticket</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">vpSessions</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #795E26">virtualProxySessionGetAll</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;some-vp&quot;</span><span style="color: #000000">);</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">vpSessions</span><span style="color: #000000">); </span><span style="color: #008000">// array or all active sessions for specified virtual proxy</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">session</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">proxyApi</span><span style="color: #000000">.</span><span style="color: #001080">sessions</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;SOME_USER_ID&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;SOME_USER_DIR&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&quot;virtual-proxy-prefix&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// optional. default is the main/default virtual proxy</span>
+<span style="color: #000000">);</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">session</span><span style="color: #000000">.</span><span style="color: #001080">details</span><span style="color: #000000">.</span><span style="color: #001080">SessionId</span><span style="color: #000000">);</span>
 </code></pre>
 				<p>In &quot;plain&quot; <code>Node.js</code></p>
 				<pre><code class="language-javascript"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">QlikProxyApi</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;qlik-proxy-api/dist/src/main&quot;</span><span style="color: #000000">);</span>
@@ -109,172 +115,8 @@
 				<a href="#endpoints-and-methods" id="endpoints-and-methods" style="color: inherit; text-decoration: none;">
 					<h1>Endpoints and methods</h1>
 				</a>
-				<table>
-					<thead>
-						<tr>
-							<th>Area</th>
-							<th>HTTP Method</th>
-							<th>Endpoint</th>
-							<th>Method</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/default</code></td>
-							<td><code>aboutDefault</code></td>
-						</tr>
-						<tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/description</code></td>
-							<td><code>aboutDescription</code></td>
-						</tr>
-						<tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/enums</code></td>
-							<td><code>aboutEnums</code></td>
-						</tr>
-						<tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/openapi</code></td>
-							<td><code>aboutOpenApi</code></td>
-						</tr>
-						<tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/openapi/{interfacename}</code></td>
-							<td><code>aboutOpenApiInterface</code></td>
-						</tr>
-						<tr>
-							<td>About</td>
-							<td><code>GET</code></td>
-							<td><code>/about/relations</code></td>
-							<td><code>aboutRelations</code></td>
-						</tr>
-						<tr>
-							<td>Alive</td>
-							<td><code>GET</code></td>
-							<td><code>/alive</code></td>
-							<td><code>alive</code></td>
-						</tr>
-						<tr>
-							<td>Error</td>
-							<td><code>POST</code></td>
-							<td><code>/error</code></td>
-							<td><code>error</code></td>
-						</tr>
-						<tr>
-							<td>Health</td>
-							<td><code>GET</code></td>
-							<td><code>/health</code></td>
-							<td><code>health</code></td>
-						</tr>
-						<tr>
-							<td>Notified</td>
-							<td><code>POST</code></td>
-							<td><code>/notified</code></td>
-							<td><code>notified</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>GET</code></td>
-							<td><code>/session</code></td>
-							<td><code>sessionGetAll</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>POST</code></td>
-							<td><code>/session</code></td>
-							<td><code>sessionAdd</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>DELETE</code></td>
-							<td><code>/session/{id}</code></td>
-							<td><code>sessionRemove</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>GET</code></td>
-							<td><code>/session/{id}</code></td>
-							<td><code>sessionGet</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>-</code></td>
-							<td><code>-</code></td>
-							<td><code>sessionGetAllForUserDir</code></td>
-						</tr>
-						<tr>
-							<td>Session</td>
-							<td><code>-</code></td>
-							<td><code>-</code></td>
-							<td><code>sessionGetAllForUserId</code></td>
-						</tr>
-						<tr>
-							<td>Ticket</td>
-							<td><code>POST</code></td>
-							<td><code>/ticket</code></td>
-							<td><code>ticketAdd</code></td>
-						</tr>
-						<tr>
-							<td>User</td>
-							<td><code>GET</code></td>
-							<td><code>/user/{directory}/{id}</code></td>
-							<td><code>userGet</code></td>
-						</tr>
-						<tr>
-							<td>User</td>
-							<td><code>DELETE</code></td>
-							<td><code>/user/{directory}/{id}</code></td>
-							<td><code>userRemove</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>GET</code></td>
-							<td><code>/virtualproxy/session/{id}</code></td>
-							<td><code>virtualProxySessionGet</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>DELETE</code></td>
-							<td><code>/virtualproxy/session/{id}</code></td>
-							<td><code>virtualProxySessionRemove</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>GET</code></td>
-							<td><code>/virtualproxy/session</code></td>
-							<td><code>virtualProxySessionGetAll</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>POST</code></td>
-							<td><code>/virtualproxy/session</code></td>
-							<td><code>virtualProxySessionAdd</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>GET</code></td>
-							<td><code>/virtualproxy/user/{directory}/{id}</code></td>
-							<td><code>virtualProxySessionGetForUser</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>DELETE</code></td>
-							<td><code>/virtualproxy/user/{directory}/{id}</code></td>
-							<td><code>virtualProxySessionRemoveForUser</code></td>
-						</tr>
-						<tr>
-							<td>{virtualproxy}</td>
-							<td><code>POST</code></td>
-							<td><code>/virtualproxy/ticket</code></td>
-							<td><code>virtualProxyTicketAdd</code></td>
-						</tr>
-				</tbody></table>
+				<p>Please check the
+				<a href="https://informatiqal.github.io/qlik-proxy-api/modules.html">documentation page</a> for list of methods</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -317,9 +159,6 @@
 					<li class=" tsd-kind-class">
 						<a href="classes/Tickets.html" class="tsd-kind-icon">Tickets</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/VirtualProxies.html" class="tsd-kind-icon">Virtual<wbr>Proxies</a>
-					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/IClassAbout.html" class="tsd-kind-icon">IClass<wbr>About</a>
 					</li>
@@ -342,9 +181,6 @@
 						<a href="interfaces/IClassTickets.html" class="tsd-kind-icon">IClass<wbr>Tickets</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/IClassVirtualProxies.html" class="tsd-kind-icon">IClass<wbr>Virtual<wbr>Proxies</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/IEnums.html" class="tsd-kind-icon">IEnums</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -361,9 +197,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ITicket.html" class="tsd-kind-icon">ITicket</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/IvpDeleteSession.html" class="tsd-kind-icon">Ivp<wbr>Delete<wbr>Session</a>
 					</li>
 				</ul>
 			</nav>

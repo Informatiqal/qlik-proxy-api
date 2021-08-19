@@ -38,12 +38,17 @@ const aliveResponse = await proxyApi.alive.get();
 const ticketResponse = await proxyApi.tickets.add(
   "SOME_USER_ID",
   "SOME_USER_DIR",
-  "virtual-proxy-prefix" // optional
+  "virtual-proxy-prefix" // optional. default is the main/default virtual proxy
 );
 console.log(ticketResponse.ticket); // id of the generated ticket
 
-const vpSessions = await proxyApi.virtualProxies.sessionGetAll("some-vp");
-console.log(vpSessions); // array or all active sessions for specified virtual proxy
+const session = await proxyApi.sessions.add(
+  "SOME_USER_ID",
+  "SOME_USER_DIR",
+  "virtual-proxy-prefix" // optional. default is the main/default virtual proxy
+);
+
+console.log(session.details.SessionId);
 ```
 
 In "plain" `Node.js`
