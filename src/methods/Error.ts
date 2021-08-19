@@ -1,20 +1,31 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-import { IError } from "../Interfaces";
+export interface IError {
+  userId?: string;
+  userDirectory?: string;
+  message: string;
+}
 
-export class Errors {
-  constructor() {}
+export interface IClassErrors {
+  add(arg: IError): Promise<string>;
+}
+export class Errors implements IClassErrors {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
 
-  public async error(this: QlikProxyApi, arg: IError): Promise<string> {
-    if (!arg.message) throw new Error(`error: "message" parameter is required`);
+  public async add(arg: IError): Promise<string> {
+    if (!arg.message)
+      throw new Error(`errors.add: "message" parameter is required`);
     let data = {
       message: arg.message,
       userId: arg.userId || "",
-      userDirectory: arg.userDir || "",
+      userDirectory: arg.userDirectory || "",
     };
 
     if (!arg.userId) delete data.userId;
-    if (!arg.userDir) delete data.userDirectory;
+    if (!arg.userDirectory) delete data.userDirectory;
 
     return await this.proxyClient
       .Post(`health`, { ...data })

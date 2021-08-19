@@ -1,89 +1,42 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
+import { ISession } from "./Sessions";
 
-import { ISession } from "../Interfaces";
-
-export class Session {
-  constructor() {}
-
-  public async sessionGet(
-    this: QlikProxyApi,
-    sessionId: string
-  ): Promise<ISession> {
-    if (!sessionId)
-      throw new Error(`sessionGet: "sessionId" parameter is required`);
-
-    return await this.proxyClient
-      .Get(`session/${sessionId}`)
-      .then((res) => res.data as ISession);
-  }
-
-  public async sessionGetAll(this: QlikProxyApi): Promise<ISession[]> {
-    return await this.proxyClient
-      .Get(`session`)
-      .then((res) => res.data as ISession[]);
-  }
-
-  public async sessionGetAllForUserId(
-    this: QlikProxyApi,
-    userId: string
-  ): Promise<ISession[]> {
-    if (!userId)
-      throw new Error(`sessionGetAllForUserId: "userId" parameter is required`);
-
-    return await this.sessionGetAll().then((allSessions) => {
-      return allSessions.filter((s) => s.UserId == userId);
-    });
-  }
-
-  public async sessionGetAllForUserDir(
-    this: QlikProxyApi,
-    userDir: string
-  ): Promise<ISession[]> {
-    if (!userDir)
-      throw new Error(
-        `sessionGetAllForUserDir: "userDir" parameter is required`
-      );
-
-    return await this.sessionGetAll().then((allSessions) => {
-      return allSessions.filter((s) => s.UserDirectory == userDir);
-    });
-  }
-
-  public async sessionAdd(
-    this: QlikProxyApi,
-    userId: string,
-    userDir: string
-  ): Promise<ISession> {
-    if (!userId) throw new Error(`sessionAdd: "userId" parameter is required`);
-    if (!userDir)
-      throw new Error(`sessionAdd: "userDir" parameter is required`);
-
-    return await this.proxyClient
-      .Post(`session`, {
-        userId: userId,
-        userDirectory: userDir,
-        sessionId: generateUUID(),
-      })
-      .then((res) => res.data as ISession);
-  }
-
-  public async sessionRemove(
-    this: QlikProxyApi,
-    sessionId: string
-  ): Promise<number> {
-    if (!sessionId)
-      throw new Error(`sessionRemove: "sessionId" parameter is required`);
-
-    return await this.proxyClient
-      .Delete(`session/${sessionId}`)
-      .then((res) => res.status);
-  }
+export interface IClassSession {
+  remove(): Promise<number>;
+  details: ISession;
 }
 
-export function generateUUID(): string {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+export class Session implements IClassSession {
+  private id: string;
+  private proxyClient: QlikRepositoryClient;
+  details: ISession;
+  virtualProxy: string;
+  constructor(
+    proxyClient: QlikRepositoryClient,
+    id: string,
+    details?: ISession,
+    virtualProxy?: string
+  ) {
+    this.proxyClient = proxyClient;
+    this.id = id;
+    this.details = details;
+    this.virtualProxy = virtualProxy;
+  }
+
+  async init() {
+    if (!this.details) {
+      let url = `session`;
+      if (this.virtualProxy) url = `${this.virtualProxy}/session`;
+      return await this.proxyClient
+        .Get(`${url}/${this.id}`)
+        .then((res) => res.data as ISession);
+    }
+  }
+
+  public async remove() {
+    let url = `session/${this.details.SessionId}`;
+    if (this.virtualProxy)
+      url = `${this.virtualProxy}/session/${this.details.SessionId}`;
+    return await this.proxyClient.Delete(url).then((res) => res.status);
+  }
 }

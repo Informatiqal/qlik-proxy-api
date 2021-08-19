@@ -1,17 +1,22 @@
 {
   "name": "qlik-proxy-api",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Interact with Qlik Sense Proxy API (QSEoW)",
   "author": {
     "email": "info@informatiqal.com",
     "name": "Informatiqal @informatiqal",
     "url": "https://informatiqal.com"
   },
-  "main": "dist/src/main.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "node dist/app.js",
-    "prestart": "npm run build",
-    "build": "tsc"
+    "prestart": "npm run build-tsc",
+    "build-tsc": "tsc",
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "docs": "npx typedoc src/index.doc.ts --name \"Qlik Proxy API\" --excludePrivate --hideGenerator"
   },
   "repository": {
     "type": "git",
@@ -26,10 +31,14 @@
   ],
   "license": "MIT",
   "files": [
-    "dist/src/*",
+    "dist",
     "*.json",
     "*.md",
-    "LICENSE"
+    "LICENSE",
+    "!CHANGELOG.md",
+    "!tsconfig.json",
+    "!tsconfig copy.json",
+    "!index.doc.ts"
   ],
   "bugs": {
     "url": "https://github.com/Informatiqal/qlik-proxy-api/issues"
@@ -46,7 +55,11 @@
     "dotenv": "^10.0.0",
     "mocha": "^9.0.2",
     "nyc": "^15.1.0",
+    "rollup": "^2.56.2",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
     "ts-node": "^10.1.0",
+    "typedoc": "^0.21.6",
     "typescript": "^4.3.5"
   }
 }

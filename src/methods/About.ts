@@ -1,48 +1,61 @@
-import { QlikProxyApi } from "../main";
+import { QlikRepositoryClient } from "qlik-rest-api";
 
-import { IEnums } from "../Interfaces";
-import { Errors } from "./Error";
+export interface IEnums {
+  key: {
+    values: string[];
+    usages: string[];
+  };
+}
 
-export class About {
-  constructor() {}
+export interface IClassAbout {
+  default(): Promise<any>;
+  description(): Promise<string[]>;
+  enums(): Promise<IEnums>;
+  openApi(): Promise<string[]>;
+  relations(): Promise<string[]>;
+  openApiInterface(interfaceName: string): Promise<Object>;
+}
 
-  public async aboutDefault(this: QlikProxyApi): Promise<any> {
+export class About implements IClassAbout {
+  private proxyClient: QlikRepositoryClient;
+  constructor(proxyClient: QlikRepositoryClient) {
+    this.proxyClient = proxyClient;
+  }
+
+  public async default() {
     return await this.proxyClient
       .Get(`about/default`)
       .then((res) => res.data as string[]);
   }
 
-  public async aboutDescription(this: QlikProxyApi): Promise<string[]> {
+  public async description() {
     return await this.proxyClient
       .Get(`about/description`)
       .then((res) => res.data as string[]);
   }
 
-  public async aboutEnums(this: QlikProxyApi): Promise<IEnums> {
+  public async enums() {
     return await this.proxyClient.Get(`about/enums`).then((res) => {
       return res.data as IEnums;
     });
   }
 
-  public async aboutOpenApi(this: QlikProxyApi): Promise<string[]> {
+  public async openApi() {
     return await this.proxyClient
       .Get(`about/openapi`)
       .then((res) => res.data as string[]);
   }
 
-  public async aboutRelations(this: QlikProxyApi): Promise<string[]> {
+  public async relations() {
     return await this.proxyClient
       .Get(`about/relations`)
       .then((res) => res.data as string[]);
   }
 
-  public async aboutOpenApiInterface(
-    this: QlikProxyApi,
-    interfaceName: string
-  ): Promise<Object> {
+  public async openApiInterface(interfaceName: string) {
     if (!interfaceName)
       throw new Error(
-        `aboutOpenApiInterface: "interfaceName" parameter is required`
+        `about.openApiInterface: "interfaceName" parameter is required`
       );
     return await this.proxyClient
       .Get(`about/openapi/${interfaceName}`)
