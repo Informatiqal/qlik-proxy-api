@@ -1,6 +1,7 @@
 test/test.ts
 tsconfig copy.json
 index.doc.ts
+.npmrc
 # Logs
 logs
 *.log
