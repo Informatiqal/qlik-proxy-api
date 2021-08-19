@@ -1,4 +1,4 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 import { ISession } from "./Sessions";
 
 export interface IClassSession {
@@ -8,11 +8,11 @@ export interface IClassSession {
 
 export class Session implements IClassSession {
   private id: string;
-  private proxyClient: QlikRepositoryClient;
+  private proxyClient: QlikProxyClient;
   details: ISession;
   virtualProxy: string;
   constructor(
-    proxyClient: QlikRepositoryClient,
+    proxyClient: QlikProxyClient,
     id: string,
     details?: ISession,
     virtualProxy?: string

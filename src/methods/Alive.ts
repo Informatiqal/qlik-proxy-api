@@ -1,12 +1,12 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IClassAlive {
   get(): Promise<boolean>;
 }
 
 export class Alive implements IClassAlive {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

@@ -1,4 +1,4 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IError {
   userId?: string;
@@ -10,8 +10,8 @@ export interface IClassErrors {
   add(arg: IError): Promise<string>;
 }
 export class Errors implements IClassErrors {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

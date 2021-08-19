@@ -1,12 +1,12 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IClassHealth {
   get(): Promise<number>;
 }
 
 export class Health implements IClassHealth {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

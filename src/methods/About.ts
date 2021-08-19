@@ -1,4 +1,4 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IEnums {
   key: {
@@ -17,8 +17,8 @@ export interface IClassAbout {
 }
 
 export class About implements IClassAbout {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

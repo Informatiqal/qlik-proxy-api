@@ -1,4 +1,4 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 
 export interface ITicket {
   UserDirectory: string;
@@ -17,8 +17,8 @@ export interface IClassTickets {
   ): Promise<ITicket>;
 }
 export class Tickets implements IClassTickets {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

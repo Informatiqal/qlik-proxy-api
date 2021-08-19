@@ -107,19 +107,19 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Sessions<span class="tsd-signature-symbol">(</span>proxyClient<span class="tsd-signature-symbol">: </span><a href="QlikRepositoryClient.html" class="tsd-signature-type" data-tsd-kind="Class">QlikRepositoryClient</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Sessions.html" class="tsd-signature-type" data-tsd-kind="Class">Sessions</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Sessions<span class="tsd-signature-symbol">(</span>proxyClient<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">QlikProxyClient</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Sessions.html" class="tsd-signature-type" data-tsd-kind="Class">Sessions</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/54fa719/src/methods/Sessions.ts#L30">src/methods/Sessions.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L30">src/methods/Sessions.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>proxyClient: <a href="QlikRepositoryClient.html" class="tsd-signature-type" data-tsd-kind="Class">QlikRepositoryClient</a></h5>
+									<h5>proxyClient: <span class="tsd-signature-type">QlikProxyClient</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="Sessions.html" class="tsd-signature-type" data-tsd-kind="Class">Sessions</a></h4>
@@ -133,14 +133,14 @@
 					<a name="add" class="tsd-anchor"></a>
 					<h3>add</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/IClassSessions.html">IClassSessions</a>.<a href="../interfaces/IClassSessions.html#add">add</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/54fa719/src/methods/Sessions.ts#L89">src/methods/Sessions.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L89">src/methods/Sessions.ts:89</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -155,7 +155,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> virtualProxy: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -163,14 +163,14 @@
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/IClassSessions.html">IClassSessions</a>.<a href="../interfaces/IClassSessions.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/54fa719/src/methods/Sessions.ts#L34">src/methods/Sessions.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L34">src/methods/Sessions.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -182,7 +182,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> virtualProxy: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -190,14 +190,14 @@
 					<a name="getAll" class="tsd-anchor"></a>
 					<h3>get<wbr>All</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>All<span class="tsd-signature-symbol">(</span>virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<span class="tsd-signature-symbol">(</span>virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/IClassSessions.html">IClassSessions</a>.<a href="../interfaces/IClassSessions.html#getAll">getAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/54fa719/src/methods/Sessions.ts#L48">src/methods/Sessions.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L48">src/methods/Sessions.ts:48</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -206,7 +206,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> virtualProxy: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -214,14 +214,14 @@
 					<a name="getForUser" class="tsd-anchor"></a>
 					<h3>get<wbr>For<wbr>User</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>For<wbr>User<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>For<wbr>User<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, virtualProxy<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/IClassSessions.html">IClassSessions</a>.<a href="../interfaces/IClassSessions.html#getForUser">getForUser</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/54fa719/src/methods/Sessions.ts#L61">src/methods/Sessions.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L61">src/methods/Sessions.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -236,7 +236,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> virtualProxy: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Session</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -267,11 +267,8 @@
 					<li class=" tsd-kind-class">
 						<a href="Notified.html" class="tsd-kind-icon">Notified</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="QlikGenericRestClient.html" class="tsd-kind-icon">Qlik<wbr>Generic<wbr>Rest<wbr>Client</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="QlikRepositoryClient.html" class="tsd-kind-icon">Qlik<wbr>Repository<wbr>Client</a>
+					<li class=" tsd-kind-class">
+						<a href="Session.html" class="tsd-kind-icon">Session</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -316,6 +313,9 @@
 						<a href="../interfaces/IClassNotified.html" class="tsd-kind-icon">IClass<wbr>Notified</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="../interfaces/IClassSession.html" class="tsd-kind-icon">IClass<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="../interfaces/IClassSessions.html" class="tsd-kind-icon">IClass<wbr>Sessions</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -349,12 +349,13 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 		</div>
 	</div>

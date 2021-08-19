@@ -1,4 +1,4 @@
-import { QlikRepositoryClient } from "qlik-rest-api";
+import { QlikProxyClient } from "qlik-rest-api";
 import { generateUUID } from "../utils";
 import { Session, IClassSession } from "./Session";
 
@@ -26,8 +26,8 @@ export interface IClassSessions {
 }
 
 export class Sessions implements IClassSessions {
-  private proxyClient: QlikRepositoryClient;
-  constructor(proxyClient: QlikRepositoryClient) {
+  private proxyClient: QlikProxyClient;
+  constructor(proxyClient: QlikProxyClient) {
     this.proxyClient = proxyClient;
   }
 

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISession | Qlik Proxy API</title>
+	<title>IClassSession | Qlik Proxy API</title>
 	<meta name="description" content="Documentation for Qlik Proxy API">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">Qlik Proxy API</a>
 				</li>
 				<li>
-					<a href="ISession.html">ISession</a>
+					<a href="IClassSession.html">IClassSession</a>
 				</li>
 			</ul>
-			<h1>Interface ISession</h1>
+			<h1>Interface IClassSession</h1>
 		</div>
 	</div>
 </header>
@@ -69,8 +69,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ISession</span>
+						<span class="target">IClassSession</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/Session.html" class="tsd-signature-type" data-tsd-kind="Class">Session</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -80,11 +86,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ISession.html#Attributes" class="tsd-kind-icon">Attributes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ISession.html#NewUser" class="tsd-kind-icon">New<wbr>User</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ISession.html#SessionId" class="tsd-kind-icon">Session<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ISession.html#UserDirectory" class="tsd-kind-icon">User<wbr>Directory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ISession.html#UserId" class="tsd-kind-icon">User<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="IClassSession.html#details" class="tsd-kind-icon">details</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="IClassSession.html#remove" class="tsd-kind-icon">remove</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,54 +101,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="Attributes" class="tsd-anchor"></a>
-					<h3>Attributes</h3>
-					<div class="tsd-signature tsd-kind-icon">Attributes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="details" class="tsd-anchor"></a>
+					<h3>details</h3>
+					<div class="tsd-signature tsd-kind-icon">details<span class="tsd-signature-symbol">:</span> <a href="ISession.html" class="tsd-signature-type" data-tsd-kind="Interface">ISession</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L8">src/methods/Sessions.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Session.ts#L6">src/methods/Session.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="NewUser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> New<wbr>User</h3>
-					<div class="tsd-signature tsd-kind-icon">New<wbr>User<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L10">src/methods/Sessions.ts:10</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="SessionId" class="tsd-anchor"></a>
-					<h3>Session<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">Session<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L9">src/methods/Sessions.ts:9</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="UserDirectory" class="tsd-anchor"></a>
-					<h3>User<wbr>Directory</h3>
-					<div class="tsd-signature tsd-kind-icon">User<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L6">src/methods/Sessions.ts:6</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="UserId" class="tsd-anchor"></a>
-					<h3>User<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">User<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Sessions.ts#L7">src/methods/Sessions.ts:7</a></li>
-						</ul>
-					</aside>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Informatiqal/qlik-proxy-api/blob/7c3f066/src/methods/Session.ts#L5">src/methods/Session.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -193,9 +181,21 @@
 					<li class=" tsd-kind-interface">
 						<a href="IClassNotified.html" class="tsd-kind-icon">IClass<wbr>Notified</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="IClassSession.html" class="tsd-kind-icon">IClass<wbr>Session</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="IClassSession.html#details" class="tsd-kind-icon">details</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="IClassSession.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="IClassSessions.html" class="tsd-kind-icon">IClass<wbr>Sessions</a>
 					</li>
@@ -214,30 +214,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="INotified.html" class="tsd-kind-icon">INotified</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="ISession.html" class="tsd-kind-icon">ISession</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ISession.html#Attributes" class="tsd-kind-icon">Attributes</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ISession.html#NewUser" class="tsd-kind-icon">New<wbr>User</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ISession.html#SessionId" class="tsd-kind-icon">Session<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ISession.html#UserDirectory" class="tsd-kind-icon">User<wbr>Directory</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ISession.html#UserId" class="tsd-kind-icon">User<wbr>Id</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="ITicket.html" class="tsd-kind-icon">ITicket</a>
 					</li>
