@@ -1,6 +1,10 @@
 import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IClassHealth {
+  /**
+   * Get the health status of the proxy service
+   * @returns Promise number
+   */
   get(): Promise<number>;
 }
 

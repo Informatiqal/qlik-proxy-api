@@ -1,20 +1,68 @@
 import { QlikProxyClient } from "qlik-rest-api";
 export interface INotified {
+  /**
+   * @type string
+   * @optional
+   */
   changeType?: string;
+  /**
+   * @type string
+   * @optional
+   */
   objectType?: string;
+  /**
+   * @type string
+   * @optional
+   */
   objectID?: string;
+  /**
+   * @type string[]
+   * @optional
+   */
   changedProperties?: string[];
+  /**
+   * @type string
+   * @optional
+   */
   engineID?: string;
+  /**
+   * @type string
+   * @optional
+   */
   engineType?: string;
+  /**
+   * @type string
+   * @optional
+   */
   originatorNodeID?: string;
+  /**
+   * @type string
+   * @optional
+   */
   originatorHostName?: string;
+  /**
+   * @type string
+   * @optional
+   */
   originatorContextID?: string;
+  /**
+   * @type string
+   * @optional
+   */
   createdDate?: string;
+  /**
+   * @type string
+   * @optional
+   */
   modifiedDate?: string;
 }
 
 export interface IClassNotified {
-  get(arg: INotified): Promise<number>;
+  /**
+   * @param Object {@link INotified}
+   * @returns Promise number
+   */
+  get(arg?: INotified): Promise<number>;
 }
 
 export class Notified implements IClassNotified {

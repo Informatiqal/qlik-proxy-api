@@ -2,7 +2,15 @@ import { QlikProxyClient } from "qlik-rest-api";
 import { ISession } from "./Sessions";
 
 export interface IClassSession {
+  /**
+   * Remove the session
+   * @returns Promise
+   */
   remove(): Promise<number>;
+  /**
+   * Holds session details
+   * {@link ISession}
+   */
   details: ISession;
 }
 

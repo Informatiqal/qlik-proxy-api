@@ -3,26 +3,94 @@ import { generateUUID } from "../utils";
 import { Session, IClassSession } from "./Session";
 
 export interface ISession {
+  /**
+   * @type string
+   */
   UserDirectory: string;
+  /**
+   * @type string
+   */
   UserId: string;
-  Attributes: string[];
+  /**
+   * User specific attributes
+   * @optional
+   * @example [  { "<Attribute1>": "value1a" },
+        { "<Attribute1>": "value1b" }, [attributes are not unique]
+        { "<Attribute2>": "" }, [value can be empty]
+        { "<Attribute3>": "value3" },
+        ...]
+   */
+  Attributes: { [k: string]: string }[];
+  /**
+   * @type string
+   */
   SessionId: string;
+  /**
+   * @type bool
+   * @optional
+   */
   NewUser?: boolean;
 }
 
+export interface ISessionGet {
+  /**
+   * @type string
+   */
+  id: string;
+  /**
+   * @type string
+   * @optional
+   */
+  virtualProxy?: string;
+}
+
+export interface ISessionGetAll {
+  /**
+   * @type string
+   * @optional
+   */
+  virtualProxy?: string;
+}
+
+export interface ISessionsForUser {
+  /**
+   * @type string
+   */
+  userId: string;
+  /**
+   * @type string
+   */
+  userDirectory: string;
+  /**
+   * @type string
+   * @optional
+   */
+  virtualProxy?: string;
+}
+
+export interface ISessionsAdd extends ISessionsForUser {}
+
 export interface IClassSessions {
-  get(id: string, virtualProxy?: string): Promise<IClassSession>;
-  getAll(virtualProxy?: string): Promise<IClassSession[]>;
-  getForUser(
-    userId: string,
-    userDirectory: string,
-    virtualProxy?: string
-  ): Promise<IClassSession[]>;
-  add(
-    userId: string,
-    userDirectory: string,
-    virtualProxy?: string
-  ): Promise<IClassSession>;
+  /**
+   * Get sessions details
+   * @param Promise {@link ISessionGet}
+   */
+  get(arg: ISessionGet): Promise<IClassSession>;
+  /**
+   * Get all sessions
+   * @param Promise {@link ISessionGetAll}
+   */
+  getAll(arg: ISessionGetAll): Promise<IClassSession[]>;
+  /**
+   * Get all sessions for specific user
+   * @param Promise {@link ISessionsForUser}
+   */
+  getForUser(arg: ISessionsForUser): Promise<IClassSession[]>;
+  /**
+   * Create session for user
+   * @param Promise {@link ISessionsAdd}
+   */
+  add(arg: ISessionsAdd): Promise<IClassSession>;
 }
 
 export class Sessions implements IClassSessions {
@@ -31,81 +99,76 @@ export class Sessions implements IClassSessions {
     this.proxyClient = proxyClient;
   }
 
-  public async get(id: string, virtualProxy?: string) {
-    if (!id) throw new Error(`sessions.get: "sessionId" parameter is required`);
+  public async get(arg: ISessionGet) {
+    if (!arg.id)
+      throw new Error(`sessions.get: "sessionId" parameter is required`);
 
     const session: Session = new Session(
       this.proxyClient,
-      id,
+      arg.id,
       null,
-      virtualProxy
+      arg.virtualProxy
     );
     await session.init();
 
     return session;
   }
 
-  public async getAll(virtualProxy?: string) {
+  public async getAll(arg: ISessionGetAll) {
     let url = "session";
-    if (virtualProxy) url = `${virtualProxy}/session`;
+    if (arg.virtualProxy) url = `${arg.virtualProxy}/session`;
     return await this.proxyClient
       .Get(url)
       .then((res) => res.data as ISession[])
       .then((data) => {
         return data.map(
-          (t) => new Session(this.proxyClient, t.SessionId, t, virtualProxy)
+          (t) => new Session(this.proxyClient, t.SessionId, t, arg.virtualProxy)
         );
       });
   }
 
-  public async getForUser(
-    userId: string,
-    userDirectory: string,
-    virtualProxy?: string
-  ) {
-    if (!userId)
+  public async getForUser(arg: ISessionsForUser) {
+    if (!arg.userId)
       throw new Error(`sessions.getForUser: "userId" parameter is required`);
-    if (!userDirectory)
+    if (!arg.userDirectory)
       throw new Error(
         `sessions.getForUser: "userDirectory" parameter is required`
       );
 
-    let url = `user/${encodeURI(userDirectory)}/${encodeURI(userId)}`;
-    if (virtualProxy)
-      url = `${virtualProxy}/user/${encodeURI(userDirectory)}/${encodeURI(
-        userId
-      )}`;
+    let url = `user/${encodeURI(arg.userDirectory)}/${encodeURI(arg.userId)}`;
+    if (arg.virtualProxy)
+      url = `${arg.virtualProxy}/user/${encodeURI(
+        arg.userDirectory
+      )}/${encodeURI(arg.userId)}`;
 
     return await this.proxyClient
       .Get(url)
       .then((res) => res.data as ISession[])
       .then((s) =>
         s.map(
-          (t) => new Session(this.proxyClient, t.SessionId, t, virtualProxy)
+          (t) => new Session(this.proxyClient, t.SessionId, t, arg.virtualProxy)
         )
       );
   }
 
-  public async add(
-    userId: string,
-    userDirectory: string,
-    virtualProxy?: string
-  ) {
-    if (!userId)
+  public async add(arg: ISessionsAdd) {
+    if (!arg.userId)
       throw new Error(`sessions.add: "userId" parameter is required`);
-    if (!userDirectory)
+    if (!arg.userDirectory)
       throw new Error(`sessions.add: "userDir" parameter is required`);
 
     let url = `session`;
-    if (virtualProxy) url = `${virtualProxy}/session`;
+    if (arg.virtualProxy) url = `${arg.virtualProxy}/session`;
 
     return await this.proxyClient
       .Post(url, {
-        userId: userId,
-        userDirectory: userDirectory,
+        userId: arg.userId,
+        userDirectory: arg.userDirectory,
         sessionId: generateUUID(),
       })
       .then((res) => res.data as ISession)
-      .then((s) => new Session(this.proxyClient, s.SessionId, s, virtualProxy));
+      .then(
+        (s) => new Session(this.proxyClient, s.SessionId, s, arg.virtualProxy)
+      );
   }
 }

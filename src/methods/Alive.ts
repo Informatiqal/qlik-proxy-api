@@ -1,6 +1,10 @@
 import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IClassAlive {
+  /**
+   * Get the alive status of the proxy service
+   * @returns bool
+   */
   get(): Promise<boolean>;
 }
 

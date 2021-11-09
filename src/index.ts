@@ -13,11 +13,23 @@ export namespace QlikProxyApi {
     public proxyClient: QlikProxyClient;
 
     public about: IClassAbout;
+    /**
+     * Status of the proxy service
+     */
     public alive: IClassAlive;
     public errors: IClassErrors;
+    /**
+     * Health status of the proxy service
+     */
     public health: IClassHealth;
     public notified: IClassNotified;
+    /**
+     * Sessions operations
+     */
     public sessions: IClassSessions;
+    /**
+     * Add new ticket
+     */
     public tickets: IClassTickets;
     constructor(public proxyConfig: any) {
       this.proxyClient = new QlikProxyClient(proxyConfig);
