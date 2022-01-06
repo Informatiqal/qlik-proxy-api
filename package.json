@@ -41,7 +41,8 @@
     "!tsconfig.json",
     "!tsconfig copy.json",
     "!tsconfig.test.json",
-    "!index.doc.ts"
+    "!dist/index.doc.ts",
+    "!dist/index.doc.d.ts"
   ],
   "bugs": {
     "url": "https://github.com/Informatiqal/qlik-proxy-api/issues"
