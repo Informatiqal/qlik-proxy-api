@@ -1,20 +1,73 @@
 import { QlikProxyClient } from "qlik-rest-api";
+import { IHttpReturn } from "../index.doc";
 
 export interface ITicket {
+  /**
+   * @type string
+   */
   UserDirectory: string;
+  /**
+   * @type string
+   */
   UserId: string;
-  Attributes: string[];
+  /**
+   * User specific attributes
+   * @optional
+   * @example [  { "<Attribute1>": "value1a" },
+        { "<Attribute1>": "value1b" }, [attributes are not unique]
+        { "<Attribute2>": "" }, [value can be empty]
+        { "<Attribute3>": "value3" },
+        ...]
+   */
+  Attributes: { [k: string]: string }[];
+  /**
+   * @type string
+   */
   Ticket: string;
+  /**
+   * @type string
+   */
   TargetUri: string;
 }
 
+export interface ITicketCreate {
+  /**
+   * @type string
+   */
+  userId: string;
+  /**
+   * @type string
+   */
+  userDirectory: string;
+  /**
+   * @type string
+   * @optional
+   */
+  ticket?: string;
+  /**
+   * @type string
+   * @optional
+   */
+  virtualProxy?: string;
+  /**
+   * User specific attributes
+   * @optional
+   * @example [  { "<Attribute1>": "value1a" },
+        { "<Attribute1>": "value1b" }, [attributes are not unique]
+        { "<Attribute2>": "" }, [value can be empty]
+        { "<Attribute3>": "value3" },
+        ...]
+   */
+  attributes?: { [k: string]: string }[];
+}
+
 export interface IClassTickets {
-  add(
-    userId: string,
-    userDirectory: string,
-    ticket?: string,
-    virtualProxy?: string
-  ): Promise<ITicket>;
+  /**
+   * Add new ticket
+   * @param Object {@link ITicketCreate}
+   * @returns Promise {@link ITicket}
+   */
+  add(arg: ITicketCreate): Promise<IHttpReturn>;
 }
 export class Tickets implements IClassTickets {
   private proxyClient: QlikProxyClient;
@@ -22,29 +75,23 @@ export class Tickets implements IClassTickets {
     this.proxyClient = proxyClient;
   }
 
-  public async add(
-    userId: string,
-    userDirectory: string,
-    virtualProxy?: string,
-    ticket?: string
-  ) {
-    if (!userId) throw new Error(`ticket.add: "userId" parameter is required`);
-    if (!userDirectory)
+  public async add(arg: ITicketCreate) {
+    if (!arg.userId)
+      throw new Error(`ticket.add: "userId" parameter is required`);
+    if (!arg.userDirectory)
       throw new Error(`ticket.add: "userDirectory" parameter is required`);
 
     let url = "ticket";
-    if (virtualProxy) url = `${virtualProxy}/ticket`;
+    if (arg.virtualProxy) url = `${arg.virtualProxy}/ticket`;
 
     let data = {
-      userId,
-      userDirectory: userDirectory,
-      ticket: ticket || "",
+      userId: arg.userId,
+      userDirectory: arg.userDirectory,
+      ticket: arg.ticket || "",
     };
 
-    if (!ticket) delete data.ticket;
+    if (!arg.ticket) delete data.ticket;
 
-    return await this.proxyClient
-      .Post(url, data)
-      .then((res) => res.data as ITicket);
+    return await this.proxyClient.Post(url, data);
   }
 }

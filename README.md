@@ -1,22 +1,33 @@
-# Qlik Sense PROXY API (QSEoW)
+![](https://badges.aleen42.com/src/mocha.svg) ![](./test/badge.png) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T0148ZP)
 
-Node.js package to interact with Qlik Sense PROXY API endpoints.
+# Qlik Sense Proxy API
 
-# Installation
+Node.js package to interact with Qlik Sense Proxy API (QSEoW)
 
-`npm install qlik-proxy-api`
+---
 
-# Usage
+## Please check out the [Wiki section](https://github.com/Informatiqal/qlik-rest-api/wiki) for details and examples
 
-Using certificates as authentication method
+---
+
+## Installation
+
+`npm install --save qlik-proxy-api`
+
+## Usage
+
+(Using certificates as authentication method)
 
 ```javascript
 import fs from "fs";
 import https from "https";
 import { QlikProxyApi } from "qlik-proxy-api";
 
+// setup the httpsAgent
+//   - read the certificates
+//   - ignore certificate errors
 const httpsAgentCert = new https.Agent({
-  rejectUnauthorized: false, // if we want suppress certificate errors (like self-signed certificate error)
+  rejectUnauthorized: false,
   cert: fs.readFileSync(`path/to/client.pem`),
   key: fs.readFileSync(`path/to/client_key.pem`),
 });
@@ -32,32 +43,16 @@ const proxyApi = new QlikProxyApi.client({
   },
 });
 
-// at this point we can use proxyApi to call any method
-const aliveResponse = await proxyApi.alive.get();
-
-const ticketResponse = await proxyApi.tickets.add(
-  "SOME_USER_ID",
-  "SOME_USER_DIR",
-  "virtual-proxy-prefix" // optional. default is the main/default virtual proxy
-);
-console.log(ticketResponse.ticket); // id of the generated ticket
-
-const session = await proxyApi.sessions.add(
-  "SOME_USER_ID",
-  "SOME_USER_DIR",
-  "virtual-proxy-prefix" // optional. default is the main/default virtual proxy
-);
+// create new session for "USER_DIR\USER_ID" in the default virtual proxy
+const session = await proxyApi.sessions.add("USER_ID", "USER_DIR");
 
 console.log(session.details.SessionId);
 ```
 
-In "plain" `Node.js`
+## Methods
 
-```javascript
-const { QlikProxyApi } = require("qlik-proxy-api/dist/src/main");
-```
+Developer documentation for all methods can be found [here](https://informatiqal.github.io/qlik-proxy-api/modules.html) for list of methods
 
-# Endpoints and methods
+---
 
-Please check the
-[documentation page](https://informatiqal.github.io/qlik-proxy-api/modules.html) for list of methods
+## **NOT AFFILIATED WITH QLIK**

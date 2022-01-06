@@ -1,12 +1,28 @@
 import { QlikProxyClient } from "qlik-rest-api";
 
 export interface IError {
+  /**
+   * @type string
+   * @optional
+   */
   userId?: string;
+  /**
+   * @type string
+   * @optional
+   */
   userDirectory?: string;
+  /**
+   * @type string
+   */
   message: string;
 }
 
 export interface IClassErrors {
+  /**
+   *
+   * @param Object {@link IError}
+   * @returns Promise string
+   */
   add(arg: IError): Promise<string>;
 }
 export class Errors implements IClassErrors {

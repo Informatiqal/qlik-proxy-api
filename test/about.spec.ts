@@ -17,12 +17,12 @@ describe("About operations", function () {
   it("About description", async function () {
     const aboutDescription = await proxyApi.about.description();
 
-    expect(aboutDescription.length).to.be.greaterThan(0);
+    expect(aboutDescription.data.length).to.be.greaterThan(0);
   });
 
   it("About enums", async function () {
     const aboutEnums = await proxyApi.about.openApiInterface("Main");
 
-    expect(aboutEnums).to.have.property("basePath");
+    expect(aboutEnums.data).to.have.property("basePath");
   });
 });

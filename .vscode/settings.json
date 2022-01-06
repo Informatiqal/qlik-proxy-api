@@ -7,5 +7,11 @@
         "typedoc",
         "virtualproxy",
         "yxxx"
+    ],
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "latex"
     ]
 }
