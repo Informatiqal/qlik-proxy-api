@@ -6,7 +6,7 @@ Node.js package to interact with Qlik Sense Proxy API (QSEoW)
 
 ---
 
-## Please check out the [Wiki section](https://github.com/Informatiqal/qlik-rest-api/wiki) for details and examples
+## Please check out the [Wiki section](https://github.com/Informatiqal/qlik-proxy-api/wiki) for details and examples
 
 ---
 

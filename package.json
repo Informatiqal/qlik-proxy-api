@@ -17,8 +17,8 @@
     "build": "rollup -c",
     "watch": "rollup -cw",
     "docs": "npx typedoc src/index.doc.ts --name \"Qlik Proxy API\" --excludePrivate --hideGenerator --darkHighlightTheme dark-plus",
-    "test": "mocha --require ts-node/register test/**/*.spec.ts",
-    "test-badge": "mocha --reporter .\\node_modules\\mocha-badge-generator\\src --reporter-options=badge_format=svg,badge_output=badge.svg --require ts-node/register test/**/*.spec.ts"
+    "test": "set TS_NODE_PROJECT=tsconfig.test.json&mocha --require ts-node/register test/**/*.spec.ts",
+    "test-badge": "set TS_NODE_PROJECT=tsconfig.test.json&mocha --reporter .\\node_modules\\mocha-badge-generator\\src --reporter-options=badge_format=svg,badge_output=badge.svg --require ts-node/register test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
