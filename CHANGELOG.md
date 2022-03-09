@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.5] - 2022-03-09
+
+### Fixed
+
+- `sessions.get` populates `details`. The request was returning the details but they were not populated inside the `Session` instance
+- `session.get` - if no virtual proxy property is provided then the default virtual proxy will be used (`virtualProxy = ""`)
+- `session.getAll` - all arguments are optional. If no arguments are provided, all sessions for the main virtual proxy will be returned (`virtualProxy = ""`)
+- `IHttpReturn` is exposed from `qlik-rest-api` instead of documentation package
+
 ## [1.1.4] - 2021-11-09
 
 ### Added

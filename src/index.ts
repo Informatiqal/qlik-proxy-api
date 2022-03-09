@@ -8,6 +8,8 @@ import { Notified, IClassNotified } from "./methods/Notified";
 import { Sessions, IClassSessions } from "./methods/Sessions";
 import { Tickets, IClassTickets } from "./methods/Ticket";
 
+export { IHttpReturn } from "qlik-rest-api/dist/interfaces/interfaces";
+
 export interface IProxyConfig {
   host: string;
   port?: number;

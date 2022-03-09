@@ -1,5 +1,5 @@
 import { QlikProxyClient } from "qlik-rest-api";
-import { IHttpReturn } from "../index.doc";
+import { IHttpReturn } from "qlik-rest-api/dist/interfaces/interfaces";
 
 export interface ITicket {
   /**
@@ -69,6 +69,7 @@ export interface IClassTickets {
    */
   add(arg: ITicketCreate): Promise<IHttpReturn>;
 }
+
 export class Tickets implements IClassTickets {
   private proxyClient: QlikProxyClient;
   constructor(proxyClient: QlikProxyClient) {

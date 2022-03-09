@@ -80,7 +80,7 @@ export interface IClassSessions {
    * Get all sessions
    * @param Promise {@link ISessionGetAll}
    */
-  getAll(arg: ISessionGetAll): Promise<IClassSession[]>;
+  getAll(arg?: ISessionGetAll): Promise<IClassSession[]>;
   /**
    * Get all sessions for specific user
    * @param Promise {@link ISessionsForUser}
@@ -107,16 +107,16 @@ export class Sessions implements IClassSessions {
       this.proxyClient,
       arg.id,
       null,
-      arg.virtualProxy
+      arg.virtualProxy || ""
     );
     await session.init();
 
     return session;
   }
 
-  public async getAll(arg: ISessionGetAll) {
+  public async getAll(arg?: ISessionGetAll) {
     let url = "session";
-    if (arg.virtualProxy) url = `${arg.virtualProxy}/session`;
+    if (arg && arg.virtualProxy) url = `${arg.virtualProxy}/session`;
     return await this.proxyClient
       .Get(url)
       .then((res) => res.data as ISession[])

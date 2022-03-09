@@ -35,9 +35,10 @@ export class Session implements IClassSession {
     if (!this.details) {
       let url = `session`;
       if (this.virtualProxy) url = `${this.virtualProxy}/session`;
-      return await this.proxyClient
-        .Get(`${url}/${this.id}`)
-        .then((res) => res.data as ISession);
+      return await this.proxyClient.Get(`${url}/${this.id}`).then((res) => {
+        this.details = res.data as ISession;
+        return this.details;
+      });
     }
   }
 
