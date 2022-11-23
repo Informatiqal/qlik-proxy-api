@@ -9,8 +9,8 @@ describe("Sessions", function () {
   this.timeout(30000);
   it("Session operation", async function () {
     const session = await proxyApi.sessions.add({
-      userId: process.env.TEST_USER_ID,
-      userDirectory: process.env.TEST_USER_DIR,
+      userId: `${process.env.TEST_USER_ID}`,
+      userDirectory: `${process.env.TEST_USER_DIR}`,
       virtualProxy: "hdr",
     });
 
@@ -27,8 +27,8 @@ describe("Sessions", function () {
 
   it("Add ticket", async function () {
     const ticket = await proxyApi.tickets.add({
-      userId: process.env.TEST_USER_ID,
-      userDirectory: process.env.TEST_USER_DIR,
+      userId: `${process.env.TEST_USER_ID}`,
+      userDirectory: `${process.env.TEST_USER_DIR}`,
       virtualProxy: "hdr",
     });
 

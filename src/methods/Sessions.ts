@@ -118,8 +118,8 @@ export class Sessions implements IClassSessions {
     let url = "session";
     if (arg && arg.virtualProxy) url = `${arg.virtualProxy}/session`;
     return await this.proxyClient
-      .Get(url)
-      .then((res) => res.data as ISession[])
+      .Get<ISession[]>(url)
+      .then((res) => res.data)
       .then((data) => {
         return data.map(
           (t) => new Session(this.proxyClient, t.SessionId, t, arg.virtualProxy)
@@ -142,8 +142,8 @@ export class Sessions implements IClassSessions {
       )}/${encodeURI(arg.userId)}`;
 
     return await this.proxyClient
-      .Get(url)
-      .then((res) => res.data as ISession[])
+      .Get<ISession[]>(url)
+      .then((res) => res.data)
       .then((s) =>
         s.map(
           (t) => new Session(this.proxyClient, t.SessionId, t, arg.virtualProxy)
@@ -161,12 +161,12 @@ export class Sessions implements IClassSessions {
     if (arg.virtualProxy) url = `${arg.virtualProxy}/session`;
 
     return await this.proxyClient
-      .Post(url, {
+      .Post<ISession>(url, {
         userId: arg.userId,
         userDirectory: arg.userDirectory,
         sessionId: generateUUID(),
       })
-      .then((res) => res.data as ISession)
+      .then((res) => res.data)
       .then(
         (s) => new Session(this.proxyClient, s.SessionId, s, arg.virtualProxy)
       );

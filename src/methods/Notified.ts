@@ -77,7 +77,7 @@ export class Notified implements IClassNotified {
       throw new Error(`notified.get: at least one parameter is required`);
 
     return await this.proxyClient
-      .Post(`notified`, { ...arg })
-      .then((res) => res.status as number);
+      .Post<number>(`notified`, { ...arg })
+      .then((res) => res.status);
   }
 }

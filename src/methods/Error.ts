@@ -44,7 +44,7 @@ export class Errors implements IClassErrors {
     if (!arg.userDirectory) delete data.userDirectory;
 
     return await this.proxyClient
-      .Post(`health`, { ...data })
-      .then((res) => res.data as string);
+      .Post<string>(`health`, { ...data })
+      .then((res) => res.data);
   }
 }

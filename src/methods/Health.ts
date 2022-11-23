@@ -16,7 +16,7 @@ export class Health implements IClassHealth {
 
   public async get() {
     return await this.proxyClient
-      .Get(`health`)
-      .then((res) => res.status as number);
+      .Get<number>(`health`)
+      .then((res) => res.status);
   }
 }

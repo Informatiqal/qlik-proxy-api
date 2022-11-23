@@ -67,7 +67,7 @@ export interface IClassTickets {
    * @param Object {@link ITicketCreate}
    * @returns Promise {@link ITicket}
    */
-  add(arg: ITicketCreate): Promise<IHttpReturn>;
+  add(arg: ITicketCreate): Promise<IHttpReturn<ITicket>>;
 }
 
 export class Tickets implements IClassTickets {
@@ -93,6 +93,6 @@ export class Tickets implements IClassTickets {
 
     if (!arg.ticket) delete data.ticket;
 
-    return await this.proxyClient.Post(url, data);
+    return await this.proxyClient.Post<ITicket>(url, data);
   }
 }

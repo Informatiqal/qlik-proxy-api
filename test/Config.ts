@@ -5,7 +5,8 @@ import https from "https";
 const dotEnvPath = path.resolve(".env");
 require("dotenv").config({ path: dotEnvPath });
 
-import { QlikProxyApi } from "../src";
+// import { QlikProxyApi } from "../src";
+import { QlikProxyApi } from "../dist";
 
 export class Config {
   public proxyApi: QlikProxyApi.client;
@@ -20,12 +21,12 @@ export class Config {
     });
 
     const proxyApi = new QlikProxyApi.client({
-      host: process.env.TEST_HOST,
+      host: `${process.env.TEST_HOST}`,
       port: 4243,
       httpsAgent: httpsAgentCert,
       authentication: {
-        user_dir: process.env.TEST_USER_DIR,
-        user_name: process.env.TEST_USER_ID,
+        user_dir: `${process.env.TEST_USER_DIR}`,
+        user_name: `${process.env.TEST_USER_ID}`,
       },
     });
 

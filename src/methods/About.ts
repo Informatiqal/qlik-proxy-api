@@ -9,18 +9,18 @@ export interface IEnums {
 }
 
 export interface IClassAbout {
-  default(): Promise<IHttpReturn>;
+  default(): Promise<IHttpReturn<{}>>;
   /**
    * List of all Proxy API endpoints
    */
-  description(): Promise<IHttpReturn>;
-  enums(): Promise<IHttpReturn>;
+  description(): Promise<IHttpReturn<string[]>>;
+  enums(): Promise<IHttpReturn<{}>>;
   /**
    * OpenApi endpoints
    */
-  openApi(): Promise<IHttpReturn>;
-  relations(): Promise<IHttpReturn>;
-  openApiInterface(interfaceName: string): Promise<IHttpReturn>;
+  openApi(): Promise<IHttpReturn<string[]>>;
+  relations(): Promise<IHttpReturn<string[]>>;
+  openApiInterface(interfaceName: string): Promise<IHttpReturn<{}>>;
 }
 
 export class About implements IClassAbout {
@@ -30,23 +30,23 @@ export class About implements IClassAbout {
   }
 
   public async default() {
-    return await this.proxyClient.Get(`about/default`);
+    return await this.proxyClient.Get<{}>(`about/default`);
   }
 
   public async description() {
-    return await this.proxyClient.Get(`about/description`);
+    return await this.proxyClient.Get<string[]>(`about/description`);
   }
 
   public async enums() {
-    return await this.proxyClient.Get(`about/enums`);
+    return await this.proxyClient.Get<{}>(`about/enums`);
   }
 
   public async openApi() {
-    return await this.proxyClient.Get(`about/openapi`);
+    return await this.proxyClient.Get<string[]>(`about/openapi`);
   }
 
   public async relations() {
-    return await this.proxyClient.Get(`about/relations`);
+    return await this.proxyClient.Get<string[]>(`about/relations`);
   }
 
   public async openApiInterface(interfaceName: string) {
@@ -54,6 +54,6 @@ export class About implements IClassAbout {
       throw new Error(
         `about.openApiInterface: "interfaceName" parameter is required`
       );
-    return await this.proxyClient.Get(`about/openapi/${interfaceName}`);
+    return await this.proxyClient.Get<{}>(`about/openapi/${interfaceName}`);
   }
 }

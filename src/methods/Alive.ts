@@ -16,7 +16,7 @@ export class Alive implements IClassAlive {
 
   public async get() {
     return await this.proxyClient
-      .Get(`alive`)
+      .Get<{ value: boolean }>(`alive`)
       .then((res) => res.data.value as boolean);
   }
 }
