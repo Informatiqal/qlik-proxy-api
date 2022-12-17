@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/chai": "4.3.4",
     "@types/mocha": "10.0.0",
-    "@types/node": "18.11.9",
+    "@types/node": "18.11.17",
     "chai": "4.3.7",
     "dotenv": "16.0.3",
     "es6-template-strings": "2.0.1",
