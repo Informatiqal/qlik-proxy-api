@@ -8,6 +8,11 @@
         "virtualproxy",
         "yxxx"
     ],
+    "mochaExplorer.nodeArgv": [
+        "--loader=ts-node/esm",
+        "--no-warnings=ExperimentalWarning",
+        "--experimental-specifier-resolution=node",
+    ],
     "spellright.language": [
         "en"
     ],

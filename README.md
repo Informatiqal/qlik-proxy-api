@@ -1,6 +1,6 @@
-![](https://badges.aleen42.com/src/mocha.svg) ![](./test/badge.png) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T0148ZP)
-
 # Qlik Sense Proxy API
+
+![Mocha](https://badges.aleen42.com/src/mocha.svg) ![Badge](./test/badge.png) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T0148ZP)
 
 Node.js package to interact with Qlik Sense Proxy API (QSEoW)
 
@@ -13,6 +13,9 @@ Node.js package to interact with Qlik Sense Proxy API (QSEoW)
 ## Installation
 
 `npm install --save qlik-proxy-api`
+
+> **Note**
+> Node version >= 16.0.0
 
 ## Usage
 

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2022-12-28
+
+- dependency updates
+- NodeJS version >= 16.0.0
+
 ## [1.2.0] - 2022-11-23
 
 - internal changes related to the Qlik Rest API package requiring type of the return data to be specified
