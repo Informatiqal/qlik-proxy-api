@@ -58,10 +58,10 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.0.0",
-    "@types/chai": "4.3.5",
+    "@types/chai": "4.3.20",
     "@types/mocha": "10.0.1",
     "@types/node": "18.17.9",
-    "chai": "4.3.7",
+    "chai": "4.5.0",
     "dotenv": "16.3.1",
     "es6-template-strings": "2.0.1",
     "esm": "^3.2.25",
